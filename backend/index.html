@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#090909">
+<title>MIFADO COIN | MFD</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --bg:#090909;
+  --panel:#121212;
+  --panel2:#181818;
+  --gold:#d6ad57;
+  --gold2:#f4d58b;
+  --muted:#898989;
+  --line:rgba(214,173,87,.17);
+  --white:#f8f5ed;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:'Vazirmatn',sans-serif;min-height:100vh;
+}
+button{font:inherit;cursor:pointer}
+.app{
+  width:100%;max-width:480px;margin:auto;min-height:100vh;
+  padding:20px 17px 105px;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(177,128,42,.12),transparent 36%),
+    var(--bg);
+}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{
+  width:43px;height:43px;border:1px solid var(--gold);
+  border-radius:50%;display:grid;place-items:center;
+  color:var(--gold2);font-size:21px;
+  box-shadow:0 0 20px rgba(214,173,87,.13);
+}
+.brand-name{font-weight:900;font-size:17px;letter-spacing:1px}
+.brand-sub{font-size:9px;color:var(--gold);letter-spacing:3px;margin-top:-3px}
+.top-actions{display:flex;align-items:center;gap:9px}
+.icon-btn,.lang-btn{
+  border:1px solid var(--line);background:#151515;color:var(--gold2);
+  border-radius:12px;height:38px;padding:0 12px;
+}
+.lang-btn{font-size:11px;font-weight:800}
+.section-label{font-size:11px;color:var(--muted);letter-spacing:1px}
+.balance-card{
+  position:relative;overflow:hidden;text-align:center;
+  padding:25px 17px 22px;border:1px solid rgba(214,173,87,.35);
+  border-radius:23px;
+  background:linear-gradient(145deg,#201b11,#111 55%,#17130d);
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+}
+.balance-card:before{
+  content:"";position:absolute;width:220px;height:220px;
+  border:1px solid rgba(214,173,87,.08);border-radius:50%;
+  top:-145px;left:calc(50% - 110px);
+  box-shadow:0 0 0 18px rgba(214,173,87,.025),0 0 0 38px rgba(214,173,87,.02);
+}
+.coin{
+  width:75px;height:75px;margin:0 auto 13px;border-radius:50%;
+  display:grid;place-items:center;color:#3a2a0d;font-size:34px;
+  background:linear-gradient(145deg,#fff0b9,#d5a642 48%,#91651e);
+  border:4px solid #8e682b;
+  box-shadow:0 0 28px rgba(214,173,87,.2),inset 0 2px 5px #fff5d7;
+}
+.balance-caption{font-size:12px;color:#b9aa8b}
+.balance-number{
+  font-size:35px;font-weight:900;color:var(--gold2);
+  direction:ltr;letter-spacing:-1px;margin:3px 0;
+}
+.coin-symbol{font-size:13px;color:var(--gold);font-weight:700;letter-spacing:2px}
+.balance-note{font-size:10px;color:#777;margin-top:9px}
+.stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:14px;
+}
+.stat-card{
+  padding:14px;border-radius:16px;background:var(--panel);
+  border:1px solid var(--line);
+}
+.stat-top{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px}
+.stat-top i{color:var(--gold);font-size:13px}
+.stat-value{font-size:17px;font-weight:800;color:var(--gold2);margin-top:7px;direction:ltr;text-align:right}
+.stat-foot{font-size:9px;color:#777;margin-top:2px}
+.mining-card{
+  margin-top:17px;padding:18px;border:1px solid var(--line);
+  border-radius:19px;background:linear-gradient(145deg,#171717,#101010);
+}
+.card-heading{display:flex;justify-content:space-between;align-items:center}
+.card-title{font-size:14px;font-weight:800}
+.live{font-size:9px;color:#b8d58c;display:flex;align-items:center;gap:6px}
+.live:before{content:"";width:6px;height:6px;background:#9bc76c;border-radius:50%;box-shadow:0 0 9px #9bc76c}
+.mining-number{font-size:24px;font-weight:900;color:var(--gold2);margin:16px 0 2px;direction:ltr;text-align:center}
+.mining-caption{text-align:center;font-size:10px;color:var(--muted)}
+.progress-head{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin:18px 0 8px}
+.progress-track{height:7px;border-radius:20px;background:#29251d;overflow:hidden}
+.progress-fill{
+  height:100%;width:42%;border-radius:20px;
+  background:linear-gradient(90deg,#96702d,#f4d58b);
+  box-shadow:0 0 12px rgba(214,173,87,.35);
+}
+.mining-bottom{display:flex;justify-content:space-between;margin-top:12px;font-size:9px;color:#777}
+.mining-bottom strong{color:var(--gold2);font-weight:600}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 12px}
+.section-head h3{font-size:14px;margin:0}
+.section-head span{font-size:10px;color:var(--gold)}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.quick-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:16px;padding:15px;min-height:104px;
+  text-align:right;color:var(--white);
+}
+.quick-icon{
+  width:34px;height:34px;display:grid;place-items:center;
+  border-radius:11px;background:rgba(214,173,87,.1);
+  color:var(--gold);margin-bottom:10px;font-size:15px;
+}
+.quick-card strong{display:block;font-size:12px}
+.quick-card small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.page{display:none}
+.page.active{display:block}
+.panel{
+  padding:17px;background:var(--panel);border:1px solid var(--line);
+  border-radius:17px;margin-top:12px;
+}
+.item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #25221c}
+.item:last-child{border:0;padding-bottom:0}
+.item-icon{width:42px;height:42px;flex-shrink:0;border-radius:13px;background:#272114;color:var(--gold);display:grid;place-items:center;font-size:17px}
+.item-info{flex:1}
+.item-info strong{font-size:12px;display:block}
+.item-info small{font-size:9px;color:var(--muted)}
+.item-action{
+  border:1px solid var(--line);background:#292113;color:var(--gold2);
+  border-radius:10px;padding:8px 11px;font-size:10px;
+}
+.item-action:disabled{opacity:.45}
+.primary-btn{
+  border:0;background:linear-gradient(100deg,#9d742d,#f0d18a);
+  color:#211708;font-weight:900;border-radius:13px;padding:12px 16px;
+  width:100%;margin-top:15px;
+}
+.wallet-box{text-align:center;padding:22px}
+.wallet-box i{font-size:34px;color:var(--gold);margin-bottom:13px}
+.wallet-box h3{font-size:16px}
+.wallet-box p{font-size:11px;color:var(--muted);line-height:2}
+.notice{
+  margin-top:15px;padding:12px;border-radius:12px;
+  background:#211c12;color:#cbb47e;font-size:10px;line-height:1.9;
+  border:1px solid var(--line);
+}
+.bottom-nav{
+  position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:480px;padding:11px 8px calc(12px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:repeat(5,1fr);
+  background:rgba(13,13,13,.96);backdrop-filter:blur(15px);
+  border-top:1px solid var(--line);
+}
+.nav-btn{
+  border:0;background:transparent;color:#777;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  font-size:9px;padding:4px 0;
+}
+.nav-btn i{font-size:17px}
+.nav-btn.active{color:var(--gold2)}
+.footer{text-align:center;color:#555;font-size:9px;margin-top:25px}
+.toast{
+  position:fixed;z-index:20;bottom:90px;left:50%;
+  transform:translate(-50%,15px);opacity:0;pointer-events:none;
+  background:#292114;color:#f2d38b;border:1px solid var(--line);
+  border-radius:12px;padding:11px 16px;font-size:11px;
+  transition:.25s;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:500px){body{padding:20px 0}.app{border:1px solid #211c12;border-radius:25px;min-height:calc(100vh - 40px)}.bottom-nav{bottom:20px;border-radius:0 0 25px 25px}}
+</style>
+</head>
+
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
+      <div>
+        <div class="brand-name">MIFADO COIN</div>
+        <div class="brand-sub">DIGITAL GOLD</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" aria-label="اعلان‌ها"><i class="fa-regular fa-bell"></i></button>
+      <button class="lang-btn" id="languageBtn">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="balance-card">
+        <div class="coin"><i class="fa-solid fa-m"></i></div>
+        <div class="balance-caption" data-fa="موجودی کل شما" data-en="YOUR TOTAL BALANCE">موجودی کل شما</div>
+        <div class="balance-number">100.00</div>
+        <div class="coin-symbol">MFD</div>
+        <div class="balance-note" data-fa="به دنیای MIFADO خوش آمدید" data-en="WELCOME TO MIFADO COIN">به دنیای MIFADO خوش آمدید</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-top"><i class="fa-solid fa-chart-line"></i><span data-fa="درآمد ساعتی" data-en="HOURLY INCOME">درآمد ساعتی</span></div>
+          <div class="stat-value">+1.00 MFD</div>
+          <div class="stat-foot" data-fa="درآمد استخراج خودکار" data-en="PASSIVE MINING">درآمد استخراج خودکار</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><i class="fa-regular fa-clock"></i><span data-fa="سقف آفلاین" data-en="OFFLINE LIMIT">سقف آفلاین</span></div>
+          <div class="stat-value">24 H</div>
+          <div class="stat-foot" data-fa="حداکثر زمان محاسبه" data-en="MAX ACCRUAL TIME">حداکثر زمان محاسبه</div>
+        </div>
+      </div>
+
+      <div class="mining-card">
+        <div class="card-heading">
+          <div class="card-title" data-fa="استخراج خودکار" data-en="PASSIVE MINING">استخراج خودکار</div>
+          <div class="live" data-fa="فعال" data-en="ACTIVE">فعال</div>
+        </div>
+        <div class="mining-number">+1.00 <span style="font-size:12px">MFD / H</span></div>
+        <div class="mining-caption" data-fa="درآمد شما به‌صورت خودکار محاسبه می‌شود" data-en="YOUR REWARDS ACCRUE AUTOMATICALLY">درآمد شما به‌صورت خودکار محاسبه می‌شود</div>
+        <div class="progress-head">
+          <span data-fa="چرخه استخراج" data-en="MINING CYCLE">چرخه استخراج</span>
+          <span>24:00:00</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill"></div></div>
+        <div class="mining-bottom">
+          <span data-fa="بدون نیاز به ضربه زدن" data-en="NO TAPPING REQUIRED">بدون نیاز به ضربه زدن</span>
+          <strong data-fa="استخراج غیرفعال" data-en="PASSIVE MODE">استخراج غیرفعال</strong>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h3 data-fa="دسترسی سریع" data-en="QUICK ACCESS">دسترسی سریع</h3>
+        <span>MIFADO / MFD</span>
+      </div>
+      <div class="quick-grid">
+        <button class="quick-card" data-go="upgrades">
+          <div class="quick-icon"><i class="fa-solid fa-rocket"></i></div>
+          <strong data-fa="ارتقای استخراج" data-en="UPGRADES">ارتقای استخراج</strong>
+          <small data-fa="افزایش درآمد ساعتی" data-en="INCREASE HOURLY INCOME">افزایش درآمد ساعتی</small>
+        </button>
+        <button class="quick-card" data-go="friends">
+          <div class="quick-icon"><i class="fa-solid fa-user-group"></i></div>
+          <strong data-fa="دعوت دوستان" data-en="INVITE FRIENDS">دعوت دوستان</strong>
+          <small data-fa="دعوت و دریافت پاداش" data-en="INVITE & EARN">دعوت و دریافت پاداش</small>
+        </button>
+        <button class="quick-card" data-go="tasks">
+          <div class="quick-icon"><i class="fa-solid fa-list-check"></i></div>
+          <strong data-fa="ماموریت‌ها" data-en="TASKS">ماموریت‌ها</strong>
+          <small data-fa="فعالیت‌های ویژه" data-en="SPECIAL ACTIVITIES">فعالیت‌های ویژه</small>
+        </button>
+        <button class="quick-card" data-go="wallet">
+          <div class="quick-icon"><i class="fa-solid fa-wallet"></i></div>
+          <strong data-fa="کیف پول" data-en="WALLET">کیف پول</strong>
+          <small data-fa="اتصال کیف پول TON" data-en="CONNECT TON WALLET">اتصال کیف پول TON</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="page" id="upgrades">
+      <div class="section-head"><h3 data-fa="ارتقای دستگاه استخراج" data-en="MINER UPGRADES">ارتقای دستگاه استخراج</h3></div>
+      <div class="notice" data-fa="با ارتقای دستگاه، نرخ درآمد ساعتی شما افزایش پیدا می‌کند." data-en="Upgrade your miner to increase your hourly income.">با ارتقای دستگاه، نرخ درآمد ساعتی شما افزایش پیدا می‌کند.</div>
+      <div class="panel">
+        <div class="item"><div class="item-icon"><i class="fa-solid fa-microchip"></i></div><div class="item-info"><strong>Basic Miner</strong><small>+1 MFD / hour · 100 MFD</small></div><button class="item-action" onclick="notify('اتصال به سرور برای خرید ارتقا هنوز فعال نشده است')">ارتقا</button></div>
+        <div class="item"><div class="item-icon"><i class="fa-solid fa-gears"></i></div><div class="item-info"><strong>Advanced Miner</strong><small>+2 MFD / hour · 250 MFD</small></div><button class="item-action" onclick="notify('اتصال به سرور برای خرید ارتقا هنوز فعال نشده است')">ارتقا</button></div>
+        <div class="item"><div class="item-icon"><i class="fa-solid fa-bolt"></i></div><div class="item-info"><strong>Pro Miner</strong><small>+4 MFD / hour · 600 MFD</small></div><button class="item-action" onclick="notify('اتصال به سرور برای خرید ارتقا هنوز فعال نشده است')">ارتقا</button></div>
+        <div class="item"><div class="item-icon"><i class="fa-solid fa-gem"></i></div><div class="item-info"><strong>Elite Miner</strong><small>+8 MFD / hour · 1500 MFD</small></div><button class="item-action" onclick="notify('اتصال به سرور برای خرید ارتقا هنوز فعال نشده است')">ارتقا</button></div>
+      </div>
+    </section>
+
+    <section class="page" id="friends">
+      <div class="section-head"><h3 data-fa="دعوت دوستان" data-en="INVITE FRIENDS">دعوت دوستان</h3></div>
+      <div class="panel wallet-box">
+        <i class="fa-solid fa-users"></i>
+        <h3 data-fa="با دوستانت رشد کن" data-en="GROW TOGETHER">با دوستانت رشد کن</h3>
+        <p data-fa="لینک اختصاصی دعوت شما پس از اتصال ربات تلگرام ساخته می‌شود." data-en="Your personal referral link will be created after Telegram bot integration.">لینک اختصاصی دعوت شما پس از اتصال ربات تلگرام ساخته می‌شود.</p>
+        <button class="primary-btn" onclick="notify('لینک دعوت پس از اتصال ربات فعال می‌شود')">دعوت دوستان</button>
+      </div>
+    </section>
+
+    <section class="page" id="tasks">
+      <div class="section-head"><h3 data-fa="ماموریت‌های ویژه" data-en="SPECIAL TASKS">ماموریت‌های ویژه</h3></div>
+      <div class="panel">
+        <div class="item"><div class="item-icon"><i class="fa-brands fa-telegram"></i></div><div class="item-info"><strong>Join Telegram Channel</strong><small>پاداش پیشنهادی: 25 MFD</small></div><button class="item-action" onclick="notify('تأیید مأموریت هنوز به سرور متصل نیست')">شروع</button></div>
+        <div class="item"><div class="item-icon"><i class="fa-brands fa-x-twitter"></i></div><div class="item-info"><strong>Follow on X</strong><small>پاداش پیشنهادی: 25 MFD</small></div><button class="item-action" onclick="notify('تأیید مأموریت هنوز به سرور متصل نیست')">شروع</button></div>
+      </div>
+    </section>
+
+    <section class="page" id="wallet">
+      <div class="section-head"><h3 data-fa="کیف پول TON" data-en="TON WALLET">کیف پول TON</h3></div>
+      <div class="panel wallet-box">
+        <i class="fa-solid fa-wallet"></i>
+        <h3 data-fa="کیف پول خود را متصل کنید" data-en="CONNECT YOUR WALLET">کیف پول خود را متصل کنید</h3>
+        <p data-fa="اتصال کیف پول با TON Connect در مرحله اتصال به شبکه فعال خواهد شد. درخواست برداشت نیز پس از راه‌اندازی امن سرور در دسترس قرار می‌گیرد." data-en="TON Connect and withdrawal requests will be enabled after secure backend integration.">اتصال کیف پول با TON Connect در مرحله اتصال به شبکه فعال خواهد شد. درخواست برداشت نیز پس از راه‌اندازی امن سرور در دسترس قرار می‌گیرد.</p>
+        <button class="primary-btn" onclick="notify('TON Connect هنوز راه‌اندازی نشده است')">Connect TON Wallet</button>
+      </div>
+      <div class="notice">MFD داخل بازی در این مرحله امتیاز نمایشی است و به معنی توکن قابل برداشت روی شبکه TON نیست.</div>
+    </section>
+  </main>
+
+  <div class="footer">MIFADO COIN · MFD · DIGITAL GOLD</div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="home"><i class="fa-solid fa-house"></i><span data-fa="خانه" data-en="HOME">خانه</span></button>
+  <button class="nav-btn" data-page="upgrades"><i class="fa-solid fa-rocket"></i><span data-fa="ارتقا" data-en="UPGRADE">ارتقا</span></button>
+  <button class="nav-btn" data-page="friends"><i class="fa-solid fa-users"></i><span data-fa="دوستان" data-en="FRIENDS">دوستان</span></button>
+  <button class="nav-btn" data-page="tasks"><i class="fa-solid fa-list-check"></i><span data-fa="ماموریت" data-en="TASKS">ماموریت</span></button>
+  <button class="nav-btn" data-page="wallet"><i class="fa-solid fa-wallet"></i><span data-fa="کیف پول" data-en="WALLET">کیف پول</span></button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const navButtons = document.querySelectorAll('.nav-btn');
+const pages = document.querySelectorAll('.page');
+
+function openPage(id){
+  pages.forEach(page => page.classList.toggle('active', page.id === id));
+  navButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.page === id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+navButtons.forEach(btn => btn.addEventListener('click', () => openPage(btn.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(btn => {
+  btn.addEventListener('click', () => openPage(btn.dataset.go));
+});
+
+let language = 'fa';
+document.getElementById('languageBtn').addEventListener('click', () => {
+  language = language === 'fa' ? 'en' : 'fa';
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === 'fa' ? 'rtl' : 'ltr';
+  document.getElementById('languageBtn').textContent = language === 'fa' ? 'EN' : 'FA';
+
+  document.querySelectorAll('[data-fa][data-en]').forEach(el => {
+    el.textContent = el.dataset[language];
+  });
+});
+
+let toastTimer;
+function notify(message){
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+</script>
+</body>
+          </html>
+                                                                                                                                                                                                                                  
